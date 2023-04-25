@@ -32,8 +32,9 @@ public class VentanaPrincipal2 extends JFrame {
 	private static JComboBox comboBox_Materia;
 	private static JComboBox comboBox_Profesor;
 	private static JComboBox comboBox_Nota;
+	private JpanelList panel_Est1;
+	private static JpanelList panel_Est;
 	
-	private static JPanel panel_2;
 	
 	/**
 	 * Launch the application.
@@ -131,6 +132,11 @@ public class VentanaPrincipal2 extends JFrame {
 		panel.add(comboBox_Nota, gbc_comboBox_Nota);
 		
 		JButton btnNewButton_1 = new JButton("botom actualizar alumnado");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.anchor = GridBagConstraints.EAST;
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 0);
@@ -138,106 +144,23 @@ public class VentanaPrincipal2 extends JFrame {
 		gbc_btnNewButton_1.gridy = 3;
 		panel.add(btnNewButton_1, gbc_btnNewButton_1);
 		
-		JPanel panel_1 = new JPanel();
+		panel_Est = new JpanelList();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
 		gbc_panel_1.gridwidth = 2;
+		gbc_panel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 0;
 		gbc_panel_1.gridy = 4;
-		panel.add(panel_1, gbc_panel_1);
-		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{178, 74, 172, 0};
-		gbl_panel_1.rowHeights = new int[]{15, 209, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		panel_1.setLayout(gbl_panel_1);
+		panel.add(panel_Est, gbc_panel_1);
 		
-		JLabel lblNewLabel_3 = new JLabel("Alumnado no seleccionado");
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.anchor = GridBagConstraints.WEST;
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridwidth = 2;
-		gbc_lblNewLabel_3.gridx = 0;
-		gbc_lblNewLabel_3.gridy = 0;
-		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
+
 		
-		JLabel lblAlumnadoSeleccionado = new JLabel("Alumnado seleccionado:");
-		GridBagConstraints gbc_lblAlumnadoSeleccionado = new GridBagConstraints();
-		gbc_lblAlumnadoSeleccionado.insets = new Insets(0, 0, 5, 0);
-		gbc_lblAlumnadoSeleccionado.gridx = 2;
-		gbc_lblAlumnadoSeleccionado.gridy = 0;
-		panel_1.add(lblAlumnadoSeleccionado, gbc_lblAlumnadoSeleccionado);
-		
-		panel_2 = new JPanel();
-		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.weightx = 1.0;
-		gbc_panel_2.fill = GridBagConstraints.BOTH;
-		gbc_panel_2.insets = new Insets(0, 0, 0, 5);
-		gbc_panel_2.gridx = 0;
-		gbc_panel_2.gridy = 1;
-		panel_1.add(panel_2, gbc_panel_2);
-		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		panel_2.setLayout(gbl_panel_2);
-		
-		JPanel panel_3 = new JPanel();
-		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.insets = new Insets(0, 0, 0, 5);
-		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridx = 1;
-		gbc_panel_3.gridy = 1;
-		panel_1.add(panel_3, gbc_panel_3);
-		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[]{54, 44, 44, 0};
-		gbl_panel_3.rowHeights = new int[]{25, 25, 0, 0, 0, 0, 0};
-		gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_3.setLayout(gbl_panel_3);
-		
-		JButton button_3 = new JButton("<<");
-		GridBagConstraints gbc_button_3 = new GridBagConstraints();
-		gbc_button_3.insets = new Insets(0, 0, 5, 5);
-		gbc_button_3.gridx = 1;
-		gbc_button_3.gridy = 1;
-		panel_3.add(button_3, gbc_button_3);
-		
-		JButton button = new JButton(">");
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 1;
-		gbc_button.gridy = 2;
-		panel_3.add(button, gbc_button);
-		
-		JButton button_1 = new JButton("<");
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.insets = new Insets(0, 0, 5, 5);
-		gbc_button_1.gridx = 1;
-		gbc_button_1.gridy = 3;
-		panel_3.add(button_1, gbc_button_1);
-		
-		JButton button_2 = new JButton(">>");
-		GridBagConstraints gbc_button_2 = new GridBagConstraints();
-		gbc_button_2.insets = new Insets(0, 0, 5, 5);
-		gbc_button_2.gridx = 1;
-		gbc_button_2.gridy = 4;
-		panel_3.add(button_2, gbc_button_2);
-		
-		JPanel panel_4 = new JPanel();
+		panel_Est1 = new JpanelList();
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
-		gbc_panel_4.weightx = 1.0;
+		gbc_panel_4.insets = new Insets(0, 0, 0, 5);
 		gbc_panel_4.fill = GridBagConstraints.BOTH;
-		gbc_panel_4.gridx = 2;
+		gbc_panel_4.gridx = 0;
 		gbc_panel_4.gridy = 1;
-		panel_1.add(panel_4, gbc_panel_4);
-		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[]{0};
-		gbl_panel_4.rowHeights = new int[]{0};
-		gbl_panel_4.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_panel_4.rowWeights = new double[]{Double.MIN_VALUE};
-		panel_4.setLayout(gbl_panel_4);
 		
 		JPanel panel_5 = new JPanel();
 		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
@@ -258,6 +181,8 @@ public class VentanaPrincipal2 extends JFrame {
 		gbc_btnNewButton.gridx = 9;
 		gbc_btnNewButton.gridy = 2;
 		panel_5.add(btnNewButton, gbc_btnNewButton);
+		
+		
 		
 		
 		cargarTodasMateria();
@@ -319,7 +244,8 @@ public class VentanaPrincipal2 extends JFrame {
 	 */
 	
 	public static void cargarTodosAlumnos() {
-		List<Estudiante> ps = ControladorAlumno.findAll();
+		
+		
 		
 		
 		
