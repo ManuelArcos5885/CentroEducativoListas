@@ -15,11 +15,15 @@ import controllers.ControladorAlumno;
 import model.Estudiante;
 
 import java.awt.Insets;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JpanelList extends JPanel {
-	private JList jlistEstudiante;
+	private JList jlistEstudiante1;
+	private JList jlistEstudiante2;
 	private List<Estudiante> listEstudiantes = ControladorAlumno.findAll();
 	private DefaultListModel<Estudiante> listModelEstudiantesSeleccionados = new DefaultListModel<Estudiante>();
 	private DefaultListModel<Estudiante> listModelEstudiantesNoSeleccionados = null;
@@ -50,12 +54,12 @@ public class JpanelList extends JPanel {
 		add(lblAlumnoSeleccionado, gbc_lblAlumnoSeleccionado);
 		
 		
-		jlistEstudiante = new JList(this.getDefaultListModelSelec());
-		this.jlistEstudiante.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); // Valor por defecto
+		jlistEstudiante1 = new JList(this.getDefaultListModelSelec());
+		this.jlistEstudiante1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); // Valor por defecto
 		
 		
 		
-		JScrollPane scrollPane = new JScrollPane(jlistEstudiante);
+		JScrollPane scrollPane = new JScrollPane(jlistEstudiante1);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.weightx = 1.0;
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -79,6 +83,11 @@ public class JpanelList extends JPanel {
 		panel.setLayout(gbl_panel);
 		
 		JButton button = new JButton("<<");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarTodosEstudiantes();
+			}
+		});
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.gridwidth = 2;
 		gbc_button.weightx = 1.0;
@@ -89,6 +98,15 @@ public class JpanelList extends JPanel {
 		panel.add(button, gbc_button);
 		
 		JButton button_1 = new JButton(">");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < jlistEstudiante1.getSelectedIndices().length; i++) {
+					listModelEstudiantesSeleccionados.removeElementAt(jlistEstudiante1.getSelectedIndices()[i]);
+					
+				}
+				
+			}
+		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.gridwidth = 2;
 		gbc_button_1.weightx = 1.0;
@@ -109,6 +127,11 @@ public class JpanelList extends JPanel {
 		panel.add(button_2, gbc_button_2);
 		
 		JButton button_3 = new JButton(">>");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agregarTodosEstudiantes2();
+			}
+		});
 		GridBagConstraints gbc_button_3 = new GridBagConstraints();
 		gbc_button_3.gridwidth = 2;
 		gbc_button_3.weightx = 1.0;
@@ -120,12 +143,12 @@ public class JpanelList extends JPanel {
 		
 		
 		
-		jlistEstudiante = new JList(this.getDefaultListModelNoSelec());
-		this.jlistEstudiante.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); // Valor por defecto
+		jlistEstudiante2 = new JList(this.getDefaultListModelNoSelec());
+		this.jlistEstudiante2.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); // Valor por defecto
 		
 		
 		
-		JScrollPane scrollPane_1 = new JScrollPane(jlistEstudiante);
+		JScrollPane scrollPane_1 = new JScrollPane(jlistEstudiante2);
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.weightx = 1.0;
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
@@ -144,13 +167,21 @@ public class JpanelList extends JPanel {
 	 * 
 	 */
 	
+	private void agregarTodosEstudiantes2() {
+		for (int i = 0; i <listEstudiantes.size(); i++) {
+			this.listModelEstudiantesNoSeleccionados.addElement(this.listEstudiantes.get(i));
+			
+		}
+		listModelEstudiantesSeleccionados.removeAllElements();
+		
+	}
+	
 	private void agregarTodosEstudiantes() {
 		for (int i = 0; i <listEstudiantes.size(); i++) {
 			this.listModelEstudiantesSeleccionados.addElement(this.listEstudiantes.get(i));
 			
 		}
-		this.listModelEstudiantesNoSeleccionados.addElement(this.listEstudiantes.get(1));
-		
+		listModelEstudiantesNoSeleccionados.removeAllElements();
 	}
 	
 	//Enlaza el jlist con el listModelEstudiantesSeleccionados
