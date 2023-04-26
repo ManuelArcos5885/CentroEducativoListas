@@ -5,7 +5,7 @@
 		<class>model.Materia</class>
 		<class>model.Profesor</class>
 		<class>model.Valoracionmateria</class>
-	<properties> 
+		<properties> 
            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/centroeducativo?serverTimezone=Europe/Madrid"/>
             <property name="javax.persistence.jdbc.user" value="java"/>
